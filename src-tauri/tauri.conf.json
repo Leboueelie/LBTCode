@@ -1,0 +1,58 @@
+{
+  "build": {
+    "beforeDevCommand": "cd desktop && bun run dev",
+    "beforeBuildCommand": "cd desktop && bun run build && cd .. && bun run build:backend",
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist-desktop"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "LBTCode",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "center": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' http://localhost:3001; img-src 'self' data:; style-src 'self' 'unsafe-inline'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "category": "DeveloperTool",
+    "copyright": "© 2026 THE IT FOUNDATION",
+    "shortDescription": "Assistant IA pour développeurs",
+    "longDescription": "LBTCode est un assistant IA de développement pour THE IT FOUNDATION. Il permet de chatter avec des modèles de langage, d'éditer du code, d'explorer des fichiers et de configurer des outils de développement.",
+    "targets": ["msi", "appimage", "dmg"],
+    "identifier": "com.theitfoundation.lbtcode",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "externalBin": ["lbtcode-api"],
+    "windows": {
+      "nsis": {
+        "installMode": "both",
+        "displayLanguageSelector": true,
+        "languages": ["French", "English"]
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "10.13"
+    },
+    "linux": {
+      "deb": {
+        "depends": []
+      }
+    }
+  }
+}

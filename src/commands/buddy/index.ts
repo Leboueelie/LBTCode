@@ -1,0 +1,16 @@
+import { isBuddyLive } from '../../buddy/useBuddyNotification.js'
+import type { Command } from '../../commands.js'
+
+const buddy = {
+  type: 'local-jsx',
+  name: 'buddy',
+  description: 'Hatch a coding companion · pet, off',
+  argumentHint: '[pet|off]',
+  immediate: true,
+  get isHidden() {
+    return !isBuddyLive()
+  },
+  load: () => import('./buddy.js'),
+} satisfies Command
+
+export default buddy
